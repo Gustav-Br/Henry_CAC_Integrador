@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.contenedorApp {
+  background-image: url('./imagenes/espacio.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-bottom: 40px;
+}

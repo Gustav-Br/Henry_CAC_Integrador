@@ -1,0 +1,51 @@
+.conteiner {
+    display: flex;
+    flex-direction: column;
+    background: rgb(130, 133, 133);
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 1em; 
+    height: 380px;
+}
+
+.wrapImgBtn {
+    position: relative;
+    display: inline-block;
+}
+
+.imagen {
+    border-radius: 10px 10px 0px 0px;
+    width: 280px;
+}
+
+.button {  
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 3px;
+    opacity: 0.6;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: 1;
+    height: 25px;
+    width: 30px;
+}
+
+.name {  
+    background-color: rgb(210, 206, 74);
+    opacity: 0.75;
+    position: absolute;
+    left: 15px;
+    bottom: 0px;
+    border-radius: 3px;
+    padding: 0 20px;
+  }
+
+.property {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
