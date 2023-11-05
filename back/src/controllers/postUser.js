@@ -7,10 +7,9 @@ const postUser = async (req, res) => {
         const user = await User.findOrCreate({
             where: { email: email,  password: password }
         });
-        return res.json({user});
+        return res.json(user);
 
     } catch (error) {
-        console.log("Catch error");
         return res.status(500).json(error.message);
     }
 };
