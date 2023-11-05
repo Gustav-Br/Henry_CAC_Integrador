@@ -9,9 +9,8 @@ const { postUser } = require('./controllers/postUser');
 const router = Router();
 
 router.get('/character/:id', getCharacterById);
-// router.post('/register', postUser);
+router.post('/register', postUser);
 router.post('/login', loginControler);
-router.get('/login', loginControler);
 router.post('/favorite', postFav);
 router.delete('/delete/:id', deleteFav);
 

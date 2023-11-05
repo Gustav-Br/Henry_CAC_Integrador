@@ -27,8 +27,11 @@ module.exports = (sequelize) => {
             allowNull: false,
          },
          origin: {
-            type: DataTypes.STRING,
+            type: DataTypes.JSON,
             allowNull: false,
+            defaultValue: {
+               name: "unknown"
+            }
          },
          image: {
             type: DataTypes.STRING,
