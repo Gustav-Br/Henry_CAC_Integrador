@@ -31,10 +31,26 @@ function App() {
     });
  } 
 
- function onClose(id) {
-   setCharacters(characters.filter( (char) => {
+  function onClose(id) {
+    setCharacters(characters.filter( (char) => {
       return char.id !== Number(id) }))
- }
+  }
+
+  function addFavs(id) {
+    axios.get(`http://localhost:3001/character/${id}`)
+      .then(({ data }) => { 
+        if (data.name) { 
+          axios.post("http://localhost:3001/favorite", data)
+          .then(() => {
+            console.log("datos enviados.");
+          })
+        } 
+      })
+      .catch(error => {
+        alert("¡No hay personajes con este ID!");
+      });
+  }
+
 
   return (
     <>
@@ -42,7 +58,10 @@ function App() {
           {(pathname !== '/') && <Nav onSearch={onSearch}/>}
           <Routes>
             <Route path={PATHROUTES.LOGIN} element= {<Form />} />
-            <Route path={PATHROUTES.HOME} element= {<Cards characters={characters} onClose={onClose}/>} />
+            <Route path={PATHROUTES.HOME} element= {<Cards 
+                characters={characters} 
+                onClose={onClose} 
+                addFavs={addFavs} />} />
             <Route path={PATHROUTES.ABOUT} element={<About />} />
             <Route path={PATHROUTES.DETAIL} element={<Detail />} />
           </Routes>

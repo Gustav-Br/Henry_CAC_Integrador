@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './Form.module.css';
 import validation from './validation';
 import axios from 'axios';
+// import { useNavigate } from 'react-router-dom';
 
 
 function Form() {
@@ -12,6 +13,7 @@ function Form() {
       });
 
     const [ errors, setErrors ] = useState({});
+    const navigate = useNavigate;
 
 
     const handlerChange = (event) => {
@@ -25,11 +27,12 @@ function Form() {
         event.preventDefault();             //  Evita que recargue la página ....
         if (!errors.email && !errors.password){   
           
-          axios.post('http://localhost:3001/', userData)
+          axios.post('http://localhost:3001/login', userData)
             .then((response) =>{
               setUserData({...userData,  email:"", password:"" });
               setErrors({});
-              alert("Login Exitoso");
+              console.log("login correcto");
+              //    navigate('/home');
             })
             .catch((error) => {
               alert("login incorrecto");

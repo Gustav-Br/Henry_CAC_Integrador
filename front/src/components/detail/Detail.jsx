@@ -13,7 +13,6 @@ function Detail() {
     axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => { 
        if (data.name) { 
           setCharacter(data); 
-          console.log(data);
        } else { 
           window.alert('No hay personajes con ese ID'); 
        } 

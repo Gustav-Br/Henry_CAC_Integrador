@@ -33,6 +33,21 @@
     width: 30px;
 }
 
+.buttonFav {  
+    position: absolute;
+    right: 5px;
+    top: 35px;
+    border-radius: 3px;
+    opacity: 0.6;
+}
+
+.buttonFav:hover {
+    cursor: pointer;
+    opacity: 1;
+    height: 26px;
+    width: 38px;
+}
+
 .name {  
     background-color: rgb(210, 206, 74);
     opacity: 0.75;

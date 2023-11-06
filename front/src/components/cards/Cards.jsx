@@ -2,7 +2,7 @@ import Card from "../card/Card";
 import style from "./Cards.module.css";
 
 
-const Cards = ({characters, onClose}) => {
+const Cards = ({characters, onClose, addFavs}) => {
     
   
   return (
@@ -18,6 +18,7 @@ const Cards = ({characters, onClose}) => {
               gender={char.gender}
               image={char.image}
               onClose={ onClose }
+              addFavs={ addFavs }
               id={char.id}
             />
           )
