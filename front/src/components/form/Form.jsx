@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import style from './Form.module.css';
 import validation from './validation';
 import axios from 'axios';
@@ -13,6 +14,8 @@ function Form() {
 
     const [ errors, setErrors ] = useState({});
 
+    const navigate = useNavigate();
+    
 
     const handlerChange = (event) => {
         const property = event.target.name;
@@ -29,6 +32,7 @@ function Form() {
             .then((response) =>{
               setUserData({...userData,  email:"", password:"" });
               setErrors({});
+              navigate('/home');
               console.log("login correcto");
             })
             .catch((error) => {
