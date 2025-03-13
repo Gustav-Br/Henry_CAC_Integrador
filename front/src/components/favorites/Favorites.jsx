@@ -3,7 +3,7 @@ import style from "./Favorites.module.css";
 import { useLocation } from 'react-router-dom';
 
 
-const Favorites = ({ characters, onClose, addFavs }) => {
+const Favorites = ({ characters, onClose, addFavs, showFavButton }) => {
 
 
     return (
@@ -21,6 +21,7 @@ const Favorites = ({ characters, onClose, addFavs }) => {
                             onClose={onClose}
                             addFavs={addFavs}
                             id={char.id}
+                            showFavButton={false} // Pasa esta prop a false para no mostrar los botones en Favoritos
                         />
                     )
                 })}
