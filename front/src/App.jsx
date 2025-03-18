@@ -21,7 +21,13 @@ function App() {
     axios(`http://localhost:3001/character/${id}`).then(({ data }) => {
 
       if (data.name) {
-        setCharacters((oldChars) => [...oldChars, data]);
+        setCharacters((oldChars) => {
+          if (oldChars.some(char => char.id === data.id)) {
+            alert("¡Este personaje ya fue agregado!");
+            return oldChars;
+          }
+          return [...oldChars, data];
+        });
       } else {
         console.log("Error  de Id ");
         alert("¡No hay personajes con este ID!");
