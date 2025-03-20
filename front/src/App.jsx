@@ -15,6 +15,8 @@ function App() {
 
   const [characters, setCharacters] = useState([]);
 
+  const [favorites, setFavorites] = useState([]);
+
   const { pathname } = useLocation();
 
   function onSearch(id) {
@@ -49,9 +51,11 @@ function App() {
       .then(({ data }) => {
         if (data.name) {
           axios.post("http://localhost:3001/favorite", data)
-            .then(() => {
-              console.log("datos enviados.");
-            })
+            .then(({ data }) => {
+              setFavorites(data.allFavor);
+              console.log(data.allFavor);
+              console.log("Favoritos actualizados.");
+            });
         }
       })
       .catch(error => {
@@ -73,7 +77,7 @@ function App() {
           <Route path={PATHROUTES.ABOUT} element={<About />} />
           <Route path={PATHROUTES.DETAIL} element={<Detail />} />
           <Route path={PATHROUTES.FAVORITES} element={<Favorites
-            characters={characters}
+            favorites={favorites}
             onClose={onClose}
             addFavs={addFavs} />} />
         </Routes>

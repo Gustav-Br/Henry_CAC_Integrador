@@ -1,15 +1,15 @@
 import Card from "../card/Card";
 import style from "./Favorites.module.css";
-import { useLocation } from 'react-router-dom';
 
 
-const Favorites = ({ characters, onClose, addFavs, showFavButton }) => {
+const Favorites = ({ favorites, onClose, addFavs, showFavButton }) => {
 
+    console.log(favorites);
 
     return (
         <>
             <div className={style.conteiner}>
-                {characters.map((char) => {
+                {favorites.map((char) => {
                     return (
                         <Card
                             key={char.id}
