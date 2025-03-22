@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import axios from "axios";
 import PATHROUTES from "./components/helpers/PathRoutes.helpers";
@@ -53,7 +53,6 @@ function App() {
           axios.post("http://localhost:3001/favorite", data)
             .then(({ data }) => {
               setFavorites(data.allFavor);
-              console.log(data.allFavor);
               console.log("Favoritos actualizados.");
             });
         }
@@ -62,6 +61,21 @@ function App() {
         alert("¡No hay personajes con este ID!");
       });
   }
+
+  function getFavorites() {
+    axios.get("http://localhost:3001/favorite")
+      .then(({ data }) => {
+        setFavorites(data.allFavor);
+      })
+      .catch((error) => {
+        console.error("Error al obtener favoritos:", error);
+      });
+  }
+
+  // Cargar Favorites al iniciar la App
+  useEffect(() => {
+    getFavorites();
+  }, []);
 
 
   return (

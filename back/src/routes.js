@@ -4,6 +4,7 @@ const loginControler = require('./controllers/loginControler');
 const postFav = require('./controllers/postFav');
 const deleteFav = require('./controllers/deleteFav');
 const { postUser } = require('./controllers/postUser');
+const getFav = require('./controllers/getFav');
 
 
 const router = Router();
@@ -12,6 +13,7 @@ router.get('/character/:id', getCharacterById);
 router.post('/register', postUser);
 router.post('/login', loginControler);
 router.post('/favorite', postFav);
+router.get('/favorite', getFav);
 router.delete('/delete/:id', deleteFav);
 
 module.exports = router;
