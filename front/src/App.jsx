@@ -72,11 +72,23 @@ function App() {
       });
   }
 
+  // Borra Favorito de la base de datos 
+  function onDelFavs(id) {
+    axios.delete(`http://localhost:3001/delete/${id}`)
+      .then(({ data }) => {
+        setFavorites(data.allFavor);
+      })
+      .catch((error) => {
+        console.error("Error:", error.message);
+      });
+
+
+  }
+
   // Cargar Favorites al iniciar la App
   useEffect(() => {
     getFavorites();
   }, []);
-
 
   return (
     <>
@@ -92,8 +104,7 @@ function App() {
           <Route path={PATHROUTES.DETAIL} element={<Detail />} />
           <Route path={PATHROUTES.FAVORITES} element={<Favorites
             favorites={favorites}
-            onClose={onClose}
-            addFavs={addFavs} />} />
+            onDelFavs={onDelFavs} />} />
         </Routes>
       </div>
     </>
