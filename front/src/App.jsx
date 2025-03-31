@@ -98,8 +98,10 @@ function App() {
           <Route path={PATHROUTES.LOGIN} element={<Form />} />
           <Route path={PATHROUTES.HOME} element={<Cards
             characters={characters}
+            favorites={favorites}
             onClose={onClose}
-            addFavs={addFavs} />} />
+            addFavs={addFavs}
+            onDelFavs={onDelFavs} />} />
           <Route path={PATHROUTES.ABOUT} element={<About />} />
           <Route path={PATHROUTES.DETAIL} element={<Detail />} />
           <Route path={PATHROUTES.FAVORITES} element={<Favorites

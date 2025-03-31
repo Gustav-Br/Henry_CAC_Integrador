@@ -2,9 +2,8 @@ import Card from "../card/Card";
 import style from "./Favorites.module.css";
 
 
-const Favorites = ({ favorites, onDelFavs, showFavButton }) => {
+const Favorites = ({ favorites, onDelFavs }) => {
 
-    console.log(favorites);
 
     return (
         <>
@@ -20,7 +19,7 @@ const Favorites = ({ favorites, onDelFavs, showFavButton }) => {
                             image={char.image}
                             onDelFavs={onDelFavs}
                             id={char.id}
-                            showFavButton={false} // Pasa esta prop a false para no mostrar los botones en Favoritos
+                            favorites={favorites}
                         />
                     )
                 })}
