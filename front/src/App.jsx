@@ -7,7 +7,8 @@ import Cards from "./components/cards/Cards";
 import Nav from "./components/nav/Nav";
 import About from "./components/about/About";
 import Detail from "./components/detail/Detail";
-import Form from "./components/form/Form";
+import Register from "./components/register/Register";
+import Login from "./components/login/Login";
 import Favorites from "./components/favorites/Favorites";
 
 
@@ -81,8 +82,15 @@ function App() {
       .catch((error) => {
         console.error("Error:", error.message);
       });
+  }
 
-
+  function NotFound() {
+    return (
+      <div style={{ textAlign: 'center', padding: '2rem' }}>
+        <h1>404 - Página no encontrada</h1>
+        <p>Lo sentimos, esta ruta no existe.</p>
+      </div>
+    );
   }
 
   // Cargar Favorites al iniciar la App
@@ -93,9 +101,11 @@ function App() {
   return (
     <>
       <div className="contenedorApp">
-        {(pathname !== '/') && <Nav onSearch={onSearch} />}
+        {(pathname !== '/') && (pathname !== PATHROUTES.LOGIN) &&
+          (pathname !== PATHROUTES.REGISTER) && <Nav onSearch={onSearch} />}
         <Routes>
-          <Route path={PATHROUTES.LOGIN} element={<Form />} />
+          <Route path={PATHROUTES.REGISTER} element={<Register />} />
+          <Route path={PATHROUTES.LOGIN} element={<Login />} />
           <Route path={PATHROUTES.HOME} element={<Cards
             characters={characters}
             favorites={favorites}
@@ -107,6 +117,7 @@ function App() {
           <Route path={PATHROUTES.FAVORITES} element={<Favorites
             favorites={favorites}
             onDelFavs={onDelFavs} />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
     </>

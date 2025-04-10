@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import style from './Form.module.css';
+import { Link, useNavigate } from 'react-router-dom';
+import style from './Login.module.css';
 import validation from './validation';
 import axios from 'axios';
 
 
-function Form() {
+function Login() {
 
   const [userData, setUserData] = useState({
     email: "",
@@ -50,6 +50,10 @@ function Form() {
 
   return (
     <div className={style.conteiner}>
+      <h3 className={style.title}>Iniciar Sesión</h3>
+      <div className={style.link} >
+        <p>¿No tienes cuenta? <Link to="/register">Registrate</Link></p>
+      </div>
       <form onSubmit={handlerSubmit} className={style.form}>
         <div className={style.campos}>
           <label htmlFor="email">email: </label>
@@ -62,10 +66,9 @@ function Form() {
         </div>
         {(errors.password) && (<div style={{ color: 'red' }}>{errors.password}</div>)}
         <button type="submit" className={style.button} >Submit</button>
-
       </form>
     </div>
   )
 }
 
-export default Form;
+export default Login;
