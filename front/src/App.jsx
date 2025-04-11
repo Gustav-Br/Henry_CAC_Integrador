@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import axios from "axios";
 import PATHROUTES from "./components/helpers/PathRoutes.helpers";
 import Cards from "./components/cards/Cards";
@@ -86,7 +86,7 @@ function App() {
 
   function NotFound() {
     return (
-      <div style={{ textAlign: 'center', padding: '2rem' }}>
+      <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: '#f8d7da', color: '#721c24' }}>
         <h1>404 - Página no encontrada</h1>
         <p>Lo sentimos, esta ruta no existe.</p>
       </div>
@@ -104,6 +104,7 @@ function App() {
         {(pathname !== '/') && (pathname !== PATHROUTES.LOGIN) &&
           (pathname !== PATHROUTES.REGISTER) && <Nav onSearch={onSearch} />}
         <Routes>
+          <Route path='/' element={<Navigate to={PATHROUTES.LOGIN} />} />
           <Route path={PATHROUTES.REGISTER} element={<Register />} />
           <Route path={PATHROUTES.LOGIN} element={<Login />} />
           <Route path={PATHROUTES.HOME} element={<Cards
@@ -117,7 +118,7 @@ function App() {
           <Route path={PATHROUTES.FAVORITES} element={<Favorites
             favorites={favorites}
             onDelFavs={onDelFavs} />} />
-          <Route path='*' element={<NotFound />} />
+          <Route path={PATHROUTES.NOTFOUND} element={<NotFound />} />
         </Routes>
       </div>
     </>

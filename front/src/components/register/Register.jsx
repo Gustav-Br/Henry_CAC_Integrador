@@ -29,7 +29,7 @@ function Register() {
                     console.log(response.data, "Registro exitoso");
                     setUserData({ ...userData, email: "", password: "" });
                     setErrors({});
-                    navigate('/login');
+                    navigate(PATHROUTES.LOGIN);
                 })
                 .catch((error) => {
                     alert("el mail ya existe");

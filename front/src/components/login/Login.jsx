@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import style from './Login.module.css';
 import validation from './validation';
 import axios from 'axios';
+import PATHROUTES from '../helpers/PathRoutes.helpers';
 
 
 function Login() {
@@ -36,7 +37,7 @@ function Login() {
           localStorage.setItem("userId", userId);
           setUserData({ ...userData, email: "", password: "" });
           setErrors({});
-          navigate('/home');
+          navigate(PATHROUTES.HOME);
         })
         .catch((error) => {
           alert("login incorrecto");

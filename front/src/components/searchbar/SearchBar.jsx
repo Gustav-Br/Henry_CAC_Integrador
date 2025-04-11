@@ -2,15 +2,13 @@ import style from "./SearchBar.module.css"
 import React, { useState } from "react";
 
 
-const SearchBar = ({onSearch}) => {
-  
+const SearchBar = ({ onSearch }) => {
+
   const [id, setId] = useState("");
 
   const handleChange = (event) => {
-      const newValue = event.target.value;
-      setId(newValue);
-                         //     event.preventDefault();   evita el disparo de renderizado si  la funcion onSearch() se llama directamente 
-      
+    const newValue = event.target.value;
+    setId(newValue);
   };
 
   return (
