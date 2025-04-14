@@ -12,10 +12,10 @@ const loginControler = async (req, res) => {
         const user = await User.findOne({ where: { email: email }, });
         if (!user) return res.status(404).send("Usuario no encontrado.");
 
-        token = jwt.sign({ emai: user.email }, SECRET_KEY, { expiresIn: '15m' });
+        token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: '15m' });
         console.log(token);
         return user.password === password
-            ? res.status(200).json({ "token": token, "userId": user.id })
+            ? res.status(200).json({ "token": token, "user": user.user, "email": user.email })
             : res.status(403).send("Contraseña incorrecta.");
 
     }

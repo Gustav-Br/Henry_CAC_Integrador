@@ -11,18 +11,7 @@ const validation = (data) => {
         errors.email = "debe ingresar un email Valido";
     };
 
-    const regExPass = /^(?=.*\d)(?=.*[a-zA-Z]).{6,18}$/;
-    if (regExPass.test(data.password)) {
-        errors.password = "";
-    } else if (!/\d+/.test(data.password)) {
-        errors.password = "debe contener al menos un numero";
-    } else if (!/[a-zA-Z]/.test(data.password)) {
-        errors.password = "debe contener al menos una letra";
-    } else if (data.password.length < 6) {
-        errors.password = "debe contener al menos 6 caracteres";
-    } else if (data.password.length > 10) {
-        errors.password = "no puede contener mas de 18 caracteres";
-    };
+    // El password no lo validamos en login, pues debe ser el password registrado
 
     return (errors);
 };

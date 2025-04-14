@@ -60,5 +60,6 @@ form div input {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 16px;
+    padding-bottom: 20px;
+    margin-top: -15px;
 }

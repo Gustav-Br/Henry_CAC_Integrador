@@ -7,10 +7,14 @@ import PATHROUTES from "../helpers/PathRoutes.helpers";
 const Nav = ({ onSearch }) => {
     const { pathname } = useLocation();
     const navegate = useNavigate();
+    const user = (localStorage.getItem("user"));
+    console.log(user);
+
 
     const handleLogout = () => {
-        localStorage.removeItem("userId");
+        localStorage.removeItem("user");
         localStorage.removeItem("token");
+        localStorage.removeItem("email");
         navegate(PATHROUTES.LOGIN);
     };
 
@@ -25,8 +29,8 @@ const Nav = ({ onSearch }) => {
             <SearchBar onSearch={onSearch} />
             {/* b{(pathname !== PATHROUTES.FAVORITES) && <SearchBar onSearch={onSearch} />} */}
             <div className={style.wrapBtn}>
-                <spam>Helo: </spam>
-                <button className={style.buttonClose} onClick={handleLogout}>Logout</button>
+                <spam className={style.heloUser}>Helo: {user}</spam>
+                <button className={style.btnLogout} onClick={handleLogout}>Logout</button>
             </div>
         </div>
     );

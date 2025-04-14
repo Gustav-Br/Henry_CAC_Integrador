@@ -19,6 +19,10 @@ module.exports = (sequelize) => {
                isLowercase: true,
             },
          },
+         user: {
+            type: DataTypes.STRING,
+            allowNull: false,
+         },
          password: {
             type: DataTypes.STRING,
             allowNull: false,
