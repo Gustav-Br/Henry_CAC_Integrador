@@ -8,7 +8,6 @@ const Nav = ({ onSearch }) => {
     const { pathname } = useLocation();
     const navegate = useNavigate();
     const user = (localStorage.getItem("user"));
-    console.log(user);
 
 
     const handleLogout = () => {
@@ -28,10 +27,11 @@ const Nav = ({ onSearch }) => {
             </div>
             <SearchBar onSearch={onSearch} />
             {/* b{(pathname !== PATHROUTES.FAVORITES) && <SearchBar onSearch={onSearch} />} */}
-            <div className={style.wrapBtn}>
-                <spam className={style.heloUser}>Helo: {user}</spam>
-                <button className={style.btnLogout} onClick={handleLogout}>Logout</button>
-            </div>
+            {(user) &&
+                <div className={style.wrapBtn}>
+                    <spam className={style.heloUser}>Helo: {user}</spam>
+                    <button className={style.btnLogout} onClick={handleLogout}>Logout</button>
+                </div>}
         </div>
     );
 };

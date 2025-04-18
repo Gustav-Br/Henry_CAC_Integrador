@@ -1,4 +1,5 @@
 const { User } = require('../DB_connection');
+const bcrypt = require('bcryptjs');
 
 const postUser = async (req, res) => {
     try {
@@ -8,7 +9,9 @@ const postUser = async (req, res) => {
         const existingEmail = await User.findOne({ where: { email } });
         if (existingEmail) return res.status(400).send('El email ya está registrado.');
 
-        const newUser = await User.create({ email: email, password: password, user: user });
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = await User.create({ email: email, password: hashedPassword, username: user });
         return res.status(200).json(newUser);
 
     } catch (error) {

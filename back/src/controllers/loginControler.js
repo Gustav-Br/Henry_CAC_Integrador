@@ -1,6 +1,7 @@
 const { User } = require('../DB_connection');
 const jwt = require('jsonwebtoken');
 const { SECRET_KEY } = process.env;
+const bcrypt = require('bcryptjs');
 
 
 const loginControler = async (req, res) => {
@@ -12,11 +13,13 @@ const loginControler = async (req, res) => {
         const user = await User.findOne({ where: { email: email }, });
         if (!user) return res.status(404).send("Usuario no encontrado.");
 
-        token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: '15m' });
-        console.log(token);
-        return user.password === password
-            ? res.status(200).json({ "token": token, "user": user.user, "email": user.email })
-            : res.status(403).send("Contraseña incorrecta.");
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) return res.status(403).send("Contraseña incorrecta.");
+
+        token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: '20m' });
+
+        return res.status(200).json({ "token": token, "user": user.username, "email": user.email })
 
     }
     catch (error) {

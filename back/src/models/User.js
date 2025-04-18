@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
                isLowercase: true,
             },
          },
-         user: {
+         username: {
             type: DataTypes.STRING,
             allowNull: false,
          },

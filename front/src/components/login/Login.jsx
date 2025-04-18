@@ -29,7 +29,6 @@ function Login() {
 			axios.post('http://localhost:3001/login', userData)
 				.then((response) => {
 					const { token, email, user } = response.data;
-					console.log(token, email, user);
 					localStorage.setItem("token", token);
 					localStorage.setItem("email", email);
 					localStorage.setItem("user", user);
@@ -51,7 +50,7 @@ function Login() {
 		<div className={style.conteiner}>
 			<h3 className={style.title}>Iniciar Sesión</h3>
 			<div className={style.link} >
-				<p>¿No tienes cuenta? <Link to="/register">Registrate</Link></p>
+				<p style={{ fontSize: '16px' }}>¿No tienes cuenta? <Link to="/register">Registrate</Link></p>
 			</div>
 			<form onSubmit={handlerSubmit} className={style.form}>
 				<div className={style.campos}>

@@ -67,7 +67,7 @@ function Register() {
                 <button type="submit" className={style.button} >Submit</button>
             </form>
             <div className={style.link}>
-                <p>Ya tienes cuenta? <Link to="/login">Login</Link></p>
+                <p style={{ fontSize: '16px' }}>Ya tienes cuenta? <Link to="/login">Login</Link></p>
             </div>
         </div>
     )
