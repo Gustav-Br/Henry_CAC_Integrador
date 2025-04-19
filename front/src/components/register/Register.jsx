@@ -18,8 +18,6 @@ function Register() {
         const newError = validation(property, value);
         setErrors(prevErrors => ({ ...prevErrors, ...newError }));     // función de actualización
         setUserData({ ...userData, [property]: value });
-        console.log(errors, "errors");
-
     };
 
     const handlerSubmit = (event) => {

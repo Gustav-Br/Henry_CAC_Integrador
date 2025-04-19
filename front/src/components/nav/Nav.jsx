@@ -29,7 +29,7 @@ const Nav = ({ onSearch }) => {
             {/* b{(pathname !== PATHROUTES.FAVORITES) && <SearchBar onSearch={onSearch} />} */}
             {(user) &&
                 <div className={style.wrapBtn}>
-                    <spam className={style.heloUser}>Helo: {user}</spam>
+                    <p className={style.heloUser}>Helo: {user}</p>
                     <button className={style.btnLogout} onClick={handleLogout}>Logout</button>
                 </div>}
         </div>

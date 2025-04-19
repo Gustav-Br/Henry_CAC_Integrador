@@ -17,6 +17,8 @@ function App() {
 	const [characters, setCharacters] = useState([]);
 	const [favorites, setFavorites] = useState([]);
 	const { pathname } = useLocation();
+	const token = (localStorage.getItem("token"));
+
 
 	function onSearch(id) {
 		axios(`http://localhost:3001/character/${id}`).then(({ data }) => {
@@ -46,13 +48,27 @@ function App() {
 	}
 
 	function addFavs(id) {
+		if (!token) {
+			alert("Debes iniciar sesión para agregar favoritos");
+			return;
+		}
 		axios.get(`http://localhost:3001/character/${id}`)
 			.then(({ data }) => {
 				if (data.name) {
-					axios.post("http://localhost:3001/favorite", data)
+					console.log(data);
+					axios.post("http://localhost:3001/favorite", data, {
+						headers: {
+							Authorization: `Bearer ${token}`
+						},
+					})
+
 						.then(({ data }) => {
 							setFavorites(data.allFavor);
 							console.log("Favoritos actualizados.");
+						})
+						.catch((error) => {
+							console.error("Error al agregar favorito:", error);
+							alert("Error al agregar favorito");
 						});
 				}
 			})

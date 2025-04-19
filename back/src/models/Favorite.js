@@ -2,12 +2,17 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
    sequelize.define(
-      'Favorite', 
+      'Favorite',
       {
          id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true, 
+            primaryKey: true,
+         },
+         email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
          },
          name: {
             type: DataTypes.STRING,
@@ -38,7 +43,7 @@ module.exports = (sequelize) => {
             allowNull: false,
          },
 
-      }, 
-         { timestamps: false }
+      },
+      { timestamps: false }
    );
 };
