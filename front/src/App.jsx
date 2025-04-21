@@ -78,7 +78,11 @@ function App() {
 	}
 
 	function getFavorites() {
-		axios.get("http://localhost:3001/favorite")
+		axios.get("http://localhost:3001/favorite", {
+			headers: {
+				Authorization: `Bearer ${token}`
+			},
+		})
 			.then(({ data }) => {
 				setFavorites(data.allFavor);
 			})
@@ -89,7 +93,11 @@ function App() {
 
 	// Borra Favorito de la base de datos 
 	function onDelFavs(id) {
-		axios.delete(`http://localhost:3001/delete/${id}`)
+		axios.delete(`http://localhost:3001/delete/${id}`, {
+			headers: {
+				Authorization: `Bearer ${token}`
+			},
+		})
 			.then(({ data }) => {
 				setFavorites(data.allFavor);
 			})

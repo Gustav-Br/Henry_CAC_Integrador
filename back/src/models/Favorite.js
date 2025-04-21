@@ -9,10 +9,9 @@ module.exports = (sequelize) => {
             allowNull: false,
             primaryKey: true,
          },
-         email: {
+         emailUser: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
          },
          name: {
             type: DataTypes.STRING,
@@ -22,7 +21,6 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM("Alive", "Dead", "unknown"),
             allowNull: false,
          },
-
          species: {
             type: DataTypes.STRING,
             allowNull: false,

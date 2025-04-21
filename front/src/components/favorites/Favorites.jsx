@@ -4,7 +4,6 @@ import style from "./Favorites.module.css";
 
 const Favorites = ({ favorites, onDelFavs }) => {
 
-
     return (
         <>
             <div className={style.conteiner}>

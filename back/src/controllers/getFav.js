@@ -3,7 +3,13 @@ const { Favorite } = require('../DB_connection');
 
 const getFav = async (req, res) => {
     try {
-        const allFavor = await Favorite.findAll();
+
+        const emailUser = req.user.email;
+        console.log("email: ", emailUser);
+
+        const allFavor = await Favorite.findAll(
+            { where: { emailUser } }
+        );
         return res.status(200).json({ allFavor });
 
     }

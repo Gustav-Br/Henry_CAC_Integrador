@@ -14,7 +14,7 @@ router.get('/character/:id', getCharacterById);
 router.post('/register', postUser);
 router.post('/login', loginControler);
 router.post('/favorite', verifyToken, postFav);
-router.get('/favorite', getFav);
-router.delete('/delete/:id', deleteFav);
+router.get('/favorite', verifyToken, getFav);
+router.delete('/delete/:id', verifyToken, deleteFav);
 
 module.exports = router;

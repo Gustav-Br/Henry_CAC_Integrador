@@ -28,9 +28,9 @@ function Login() {
 
 			axios.post('http://localhost:3001/login', userData)
 				.then((response) => {
-					const { token, email, user } = response.data;
+					const { token, user } = response.data;
 					localStorage.setItem("token", token);
-					localStorage.setItem("email", email);
+					// localStorage.setItem("email", email);
 					localStorage.setItem("user", user);
 					setUserData({ ...userData, email: "", password: "" });
 					setErrors({});

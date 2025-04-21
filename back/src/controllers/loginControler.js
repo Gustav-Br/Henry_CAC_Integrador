@@ -17,9 +17,9 @@ const loginControler = async (req, res) => {
 
         if (!isMatch) return res.status(403).send("Contraseña incorrecta.");
 
-        token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: '20m' });
+        token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: '56m' });
 
-        return res.status(200).json({ "token": token, "user": user.username, "email": user.email })
+        return res.status(200).json({ "token": token, "user": user.username })
 
     }
     catch (error) {

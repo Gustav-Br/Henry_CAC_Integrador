@@ -20,7 +20,7 @@ const Nav = ({ onSearch }) => {
     return (
         <div className={style.nav}>
             <div className={style.navLinks}>
-                <NavLink to={PATHROUTES.ABOUT} className={({ isActive }) => (isActive ? style.active : "")}>About</NavLink>
+                <NavLink to={PATHROUTES.LOGIN} className={({ isActive }) => (isActive ? style.active : "")}>Login</NavLink>
                 <NavLink to={PATHROUTES.HOME} className={({ isActive }) => (isActive ? style.active : "")}>Home</NavLink>
                 <NavLink to={PATHROUTES.FAVORITES} className={({ isActive }) => (isActive ? style.active : "")}>Favorites</NavLink>
 
